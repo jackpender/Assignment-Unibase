@@ -31,12 +31,14 @@ fun main(args: Array<String>){
             4 -> listColleges()
             5 -> listCourses()
             6 -> listModules()
+            7 -> searchCollege()
+            8 -> deleteCollege()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
         }
         println()
     } while (input != -1)
-    logger.info { "Shutting Down Placemark Console App" }
+    logger.info { "Shutting Down UniBase" }
 }
 
 fun menu() : Int {
@@ -51,6 +53,8 @@ fun menu() : Int {
     println(" 4. List Colleges: ")
     println(" 5. List Courses: ")
     println(" 6. List Modules: ")
+    println(" 7. Search College: ")
+    println(" 8. Delete College: ")
     println("-1. Exit")
     println()
     print("Enter an integer : ")
@@ -151,5 +155,49 @@ fun listModules() {
                 "\nModule Description: " + i.description +
                 "\nModule Credits: " + i.credits +
                 "\nModule ID: " + i.id + "\n")
+    }
+}
+
+fun getId() : Long {
+    var strId : String?
+    var searchId : Long
+    print("Enter id to Search/Update : ")
+    strId = readLine()!!
+    searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())
+        strId.toLong()
+    else
+        -9
+    return searchId
+}
+
+fun search(id: Long) : CollegeModel? {
+    var foundCollege: CollegeModel? = colleges.find { p -> p.id == id }
+    return foundCollege
+}
+
+fun searchCollege() {
+
+    var searchId = getId()
+    val thisCollege = search(searchId)
+
+    if(thisCollege != null)
+        println("College Name: ${thisCollege.name}\nCollege Eircode: ${thisCollege.address}\nCollege ID: ${thisCollege.id}\n")
+    else
+        println("College Not Found...")
+}
+
+fun deleteCollege() {
+    println("Delete College")
+    println()
+    listColleges()
+    var searchId = getId()
+    val thisCollege = search(searchId)
+    print("this "+thisCollege)
+
+    if(thisCollege != null && thisCollege.id == searchId) {
+        colleges.remove(colleges.get(searchId.toInt()))
+    }
+    else {
+        println("College Not Removed...")
     }
 }
