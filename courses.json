@@ -1,0 +1,44 @@
+[
+  {
+    "id": 8807649632327782795,
+    "name": "iot",
+    "description": "this course",
+    "years": 4,
+    "modules": []
+  },
+  {
+    "id": -1778828156909791705,
+    "name": "iot",
+    "description": "course again",
+    "years": 4,
+    "modules": []
+  },
+  {
+    "id": -7249520587908553644,
+    "name": "forensics",
+    "description": "boring",
+    "years": 4,
+    "modules": []
+  },
+  {
+    "id": 4782457531313129138,
+    "name": "iot",
+    "description": "iot course",
+    "years": 4,
+    "modules": []
+  },
+  {
+    "id": -783453479607898525,
+    "name": "iot",
+    "description": "this course",
+    "years": 4,
+    "modules": []
+  },
+  {
+    "id": -7938296134388414439,
+    "name": "iot",
+    "description": "this course",
+    "years": 4,
+    "modules": []
+  }
+]

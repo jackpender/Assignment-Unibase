@@ -1,8 +1,7 @@
 package org.wit.placemark.console.controllers
 
 import mu.KotlinLogging
-//import org.wit.placemark.console.main.collegeView
-import org.wit.placemark.console.main.colleges
+
 import org.wit.placemark.console.views.CourseView
 
 import org.wit.placemark.console.controllers.CollegeController
@@ -18,38 +17,13 @@ var moduleView = ModuleView()
 
 var collegeView = CollegeView()
 
-//var colleges = CollegeMemStore()
+var colleges = CollegeJSONStore()
 
 class CourseController {
 
-    val courses = CourseMemStore()
+    val courses = CourseJSONStore()
     val courseView = CourseView()
     val logger = KotlinLogging.logger {}
-
-    init {
-        logger.info { "Launching Unibase Console App" }
-        println("Unibase Kotlin App Version 1.0")
-    }
-
-    fun start() {
-        var input: Int
-
-        do {
-            input = menu()
-            when (input) {
-                2 -> add()
-//                2 -> update()
-                5 -> list()
-//                4 -> search()
-                -1 -> println("Exiting App")
-                else -> println("Invalid Option")
-            }
-            println()
-        } while (input != -1)
-        logger.info { "Shutting Down Unibase Console App" }
-    }
-
-    fun menu() :Int { return courseView.menu() }
 
     fun add(){
         collegeView.listColleges(colleges)
@@ -73,40 +47,6 @@ class CourseController {
             logger.info("Course Not Added")
         }
     }
-
-    /*fun addModule() {
-        collegeView.listColleges(colleges)
-        var collegeId = collegeView.getId()
-        var aCollege = searchCollege(collegeId)
-
-        if (aCollege != null) {
-            courseView.listCollegeCourses(aCollege.courses)
-        }
-        var searchId = courseView.getId()
-        val aCourse = search(searchId)
-
-        print("this " + aCollege)
-
-        var aModule = ModuleModel()
-
-
-        if (aModule != null) {
-            if (moduleView.addModuleData(aModule)) {
-                modules.create(aModule)
-                if (aCourse != null) {
-                    aCourse.modules.add(aModule)
-                    if (aCollege != null) {
-                        aCollege.courses.get(searchId.toInt()).modules.add(aModule)
-                    }
-                }
-            } else {
-                logger.info("Module Not Added")
-            }
-        }
-        else{
-            logger.info("Module Not Added")
-        }
-    }*/
 
     fun list() {
         courseView.listCourses(courses)

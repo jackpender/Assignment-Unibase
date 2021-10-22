@@ -2,24 +2,19 @@ package org.wit.placemark.console.controllers
 
 import mu.KotlinLogging
 import org.wit.placemark.console.main.course
-import org.wit.placemark.console.main.courses
-import org.wit.placemark.console.main.modules
-import org.wit.placemark.console.models.CollegeMemStore
-import org.wit.placemark.console.models.CollegeModel
-import org.wit.placemark.console.models.CourseModel
-import org.wit.placemark.console.models.ModuleModel
-import org.wit.placemark.console.views.CollegeView
-import org.wit.placemark.console.views.courseController
-import org.wit.placemark.console.views.CourseView
-import org.wit.placemark.console.views.moduleController
+import org.wit.placemark.console.models.*
+import org.wit.placemark.console.views.*
 
 var courseView = CourseView()
 
 class CollegeController {
-
-    val colleges = CollegeMemStore()
+    val colleges = CollegeJSONStore()
     val collegeView = CollegeView()
     val logger = KotlinLogging.logger {}
+
+    val courses = CourseJSONStore()
+
+    val modules = ModuleJSONStore()
 
     init {
         logger.info { "Launching Unibase Console App" }
@@ -32,17 +27,28 @@ class CollegeController {
         do {
             input = menu()
             when (input) {
-                1 -> addMenu()
-//                2 -> addCourse()
-//                3 -> addModule()
-                2 -> listMenu()
-//                5 -> listCourses()
-//                6 -> moduleController.list()
-                3 -> searchMenu()
-                4 -> deleteMenu()
-                5 -> updateMenu()
-                -1 -> println("Exiting App")
-                else -> println("Invalid Option")
+                1 -> {
+                    addMenu()
+                }
+                2 -> {
+                    listMenu()
+                }
+                3 -> {
+                    searchMenu()
+                }
+                4 -> {
+                    deleteMenu()
+                }
+                5 -> {
+                    updateMenu()
+                }
+                -1 -> {
+                    colleges.serialize()
+                    println("Exiting App")
+                }
+                else -> {
+                    println("Invalid Option")
+                }
             }
             println()
         } while (input != -1)
@@ -167,7 +173,6 @@ class CollegeController {
         else{
             logger.info("College Not Found")
         }
-
     }
 
     fun addModule() {

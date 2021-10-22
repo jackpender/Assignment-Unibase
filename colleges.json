@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1034465698684414274,
+    "name": "wit",
+    "address": "1234567",
+    "courses": [
+      {
+        "id": -7938296134388414439,
+        "name": "iot",
+        "description": "this course",
+        "years": 4,
+        "modules": [
+          {
+            "id": 2905409775595817261,
+            "name": "mobile app dev",
+            "description": "cool module",
+            "credits": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5894965304911916722,
+    "name": "lit",
+    "address": "1234567",
+    "courses": []
+  }
+]
