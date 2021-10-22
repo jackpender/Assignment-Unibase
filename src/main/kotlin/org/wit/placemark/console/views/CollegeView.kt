@@ -1,15 +1,11 @@
 package org.wit.placemark.console.views
 
-//import org.wit.placemark.console.main.CollegeView
+
 import org.wit.placemark.console.main.college
 import org.wit.placemark.console.main.colleges
-//import org.wit.placemark.console.controllers.search
-import org.wit.placemark.console.models.CollegeMemStore
-import org.wit.placemark.console.models.CollegeModel
 
 import org.wit.placemark.console.controllers.CollegeController
-import org.wit.placemark.console.models.CourseMemStore
-import org.wit.placemark.console.models.CourseModel
+import org.wit.placemark.console.models.*
 
 var controller = CollegeController()
 
@@ -22,11 +18,7 @@ class CollegeView {
 
         println("Main Menu")
         println(" 1. Add a College/Course/Module: ")
-//        println(" 2. Add a Course: ")
-//        println(" 3. Add a Module: ")
         println(" 2. List College/Course/Module: ")
-/*        println(" 5. List Courses: ")
-        println(" 6. List Modules: ")*/
         println(" 3. Search College/Course/Module: ")
         println(" 4. Delete College/Course/Module: ")
         println(" 5. Update College/Course/Module")
@@ -146,7 +138,7 @@ class CollegeView {
         return option
     }
 
-    fun listColleges(colleges : CollegeMemStore) {
+    fun listColleges(colleges : CollegeJSONStore) {
         println("List All Colleges")
         println()
         for(i in colleges.colleges) {
@@ -158,19 +150,6 @@ class CollegeView {
             println()
         }
     }
-
-    /*fun listCourses(courses: CourseMemStore) {
-        println("List All Courses")
-        println()
-        for(i in college.courses) {
-            println(
-                "Course Name: " + i.name +
-                        "\nCourse Description: " + i.description +
-                        "\nCourse Years: " + i.years +
-                        "\nCourse ID: " + i.id)
-            println()
-        }
-    }*/
 
     fun showCollege(college : CollegeModel) {
         if(college != null) {
@@ -184,32 +163,6 @@ class CollegeView {
         else
             println("College Not Found...")
     }
-
-    /*fun showCourse(course : CourseModel) {
-        if(course != null) {
-            println(" -- Course Details -- ")
-            print(
-                "Course Name: " + course.name +
-                        "\nCourse Description: " + course.description +
-                        "\nCourse Number of Years: " + course.years + "\n"
-            )
-        }
-        else
-            println("Course Not Found...")
-    }*/
-
-    /*fun showModule(module : ModuleModel) {
-        if(module != null) {
-            println(" -- Module Details -- ")
-            print(
-                "Module Name: " + module.name +
-                        "\nModule Description: " + module.description +
-                        "\nCourse Number of Credits: " + module.credits + "\n"
-            )
-        }
-        else
-            println("Module Not Found...")
-    }*/
 
     fun addCollegeData(college : CollegeModel) : Boolean {
         println(" -- Add College -- ")

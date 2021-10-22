@@ -1,7 +1,5 @@
 package org.wit.placemark.console.views
 
-//import org.wit.placemark.console.main.CollegeView
-//import org.wit.placemark.console.main.search
 import org.wit.placemark.console.models.CourseMemStore
 import org.wit.placemark.console.models.CourseModel
 
@@ -10,6 +8,8 @@ import org.wit.placemark.console.controllers.collegeController
 import org.wit.placemark.console.controllers.courseView
 import org.wit.placemark.console.main.*
 import org.wit.placemark.console.models.CollegeModel
+import org.wit.placemark.console.models.CourseJSONStore
+import org.wit.placemark.console.models.CollegeJSONStore
 
 var courseController  = CourseController()
 var aCollege = CollegeModel()
@@ -42,7 +42,7 @@ class CourseView {
         return option
     }
 
-    fun listCourses(courses: CourseMemStore) {
+    fun listCourses(courses: CourseJSONStore) {
         println("List All Courses")
         println()
         for(i in courses.courses) {
@@ -95,22 +95,6 @@ class CourseView {
         return course.name.isNotEmpty() && course.description.isNotEmpty() && course.years != null
     }
 
-    /*fun deleteCourseData(course: CourseModel): Boolean{
-        println("Delete Course")
-        println()
-        listCourses(courses)
-        var searchId = getId()
-        val thisCourse = courseController.search(searchId)
-        print("this "+thisCourse)
-
-        if(thisCourse != null && thisCourse.id == searchId) {
-            courses.courses.remove(thisCourse)
-        }
-        else {
-            println("College Not Removed...")
-        }
-    }*/
-
     fun deleteCourseData(course: CourseModel) : Boolean {
         println(" -- Delete Course -- ")
         println()
@@ -145,8 +129,8 @@ class CourseView {
     }
 
     fun getId() : Long {
-        var strId : String? // String to hold user input
-        var searchId : Long // Long to hold converted id
+        var strId : String?
+        var searchId : Long
         print("Enter id to Search/Update : ")
         strId = readLine()!!
         searchId = if (strId.toLongOrNull() != null && !strId.isEmpty())

@@ -12,7 +12,6 @@ internal fun getId(): Long {
 class CollegeMemStore : CollegeStore {
 
     val colleges = ArrayList<CollegeModel>()
-//    val courses = ArrayList<CourseModel>()
 
     override fun findAll(): List<CollegeModel> {
         return colleges
